@@ -1,0 +1,13 @@
+
+[[metatag attr]]
+
+
+# A comment
+[tag]
+	# Another comment
+	key: value
+	key2: value2
+	array:
+		- element1
+		- element2
+

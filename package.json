@@ -1,0 +1,25 @@
+{
+  "name": "tree-sitter-kfg",
+  "version": "0.0.1",
+  "description": "Tree-sitter parser for KFG.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cronvel/tree-sitter-kfg.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "kfg"
+  ],
+  "author": "Cédric Ronvel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cronvel/tree-sitter-kfg/issues"
+  },
+  "homepage": "https://github.com/cronvel/tree-sitter-kfg#readme",
+  "dependencies": {
+    "nan": "^2.14.1"
+  }
+}
