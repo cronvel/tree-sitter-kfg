@@ -5,9 +5,9 @@
 # A comment
 [tag]
 	# Another comment
-	key: value
-	key2: value2
+	key: "value"
+	key2: "value2"
 	array:
-		- element1
-		- element2
+		- "element1"
+		- "element2"
 
