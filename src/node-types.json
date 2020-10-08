@@ -10,6 +10,25 @@
     "fields": {}
   },
   {
+    "type": "document",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "header_line",
+          "named": true
+        },
+        {
+          "type": "line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expression",
     "named": true,
     "fields": {}
@@ -148,7 +167,7 @@
           "named": true
         },
         {
-          "type": "property",
+          "type": "property_entry",
           "named": true
         },
         {
@@ -198,7 +217,7 @@
     "fields": {}
   },
   {
-    "type": "property",
+    "type": "property_entry",
     "named": true,
     "fields": {},
     "children": {
@@ -241,25 +260,6 @@
     "fields": {}
   },
   {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "header_line",
-          "named": true
-        },
-        {
-          "type": "line",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "tag",
     "named": true,
     "fields": {},
@@ -291,6 +291,10 @@
           "named": true
         },
         {
+          "type": "implicit_string",
+          "named": true
+        },
+        {
           "type": "introduced_string",
           "named": true
         },
@@ -303,7 +307,7 @@
           "named": true
         },
         {
-          "type": "numbers",
+          "type": "number",
           "named": true
         },
         {
@@ -417,11 +421,15 @@
     "named": true
   },
   {
+    "type": "implicit_string",
+    "named": true
+  },
+  {
     "type": "key",
     "named": true
   },
   {
-    "type": "numbers",
+    "type": "number",
     "named": true
   },
   {

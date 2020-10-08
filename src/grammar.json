@@ -1,7 +1,7 @@
 {
   "name": "kfg",
   "rules": {
-    "source_file": {
+    "document": {
       "type": "SEQ",
       "members": [
         {
@@ -131,7 +131,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "property"
+          "name": "property_entry"
         },
         {
           "type": "SYMBOL",
@@ -190,48 +190,48 @@
         }
       ]
     },
-    "property": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "key"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "quoted_key"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": " *:"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": " +"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "value_definition"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+    "property_entry": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "key"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "quoted_key"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": " +"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "value_definition"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "list_entry": {
       "type": "SEQ",
@@ -380,7 +380,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "numbers"
+            "name": "number"
           },
           {
             "type": "SYMBOL",
@@ -413,16 +413,12 @@
           {
             "type": "SYMBOL",
             "name": "ref"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "implicit_string"
           }
         ]
-      }
-    },
-    "child": {
-      "type": "PREC",
-      "value": -20,
-      "content": {
-        "type": "PATTERN",
-        "value": " *"
       }
     },
     "tag_content": {
@@ -430,14 +426,30 @@
       "value": "[^\\[\\]\\n]+"
     },
     "key": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[a-zA-Z][a-zA-Z0-9_-]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": " *:"
+          }
+        ]
+      }
+    },
+    "quoted_key": {
       "type": "PATTERN",
-      "value": "[a-zA-Z][a-zA-Z0-9_-]*"
+      "value": "\"[a-zA-Z][a-zA-Z0-9_-]*\" *:"
     },
     "constant": {
       "type": "PATTERN",
       "value": "null|true|false|on|off|yes|no|NaN|Infinity|-Infinity"
     },
-    "numbers": {
+    "number": {
       "type": "PATTERN",
       "value": "-?[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?"
     },
@@ -626,16 +638,8 @@
       ]
     },
     "implicit_string": {
-      "type": "PREC",
-      "value": -1,
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\\n]+"
-      }
-    },
-    "quoted_key": {
       "type": "PATTERN",
-      "value": "\"[a-zA-Z][a-zA-Z0-9_-]*\""
+      "value": "[^\\n\"\\(\\$> ][^\\n]*"
     },
     "operator": {
       "type": "PREC",
